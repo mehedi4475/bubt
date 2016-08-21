@@ -20,6 +20,12 @@
 							<img src="img/logo.png" width="75" height="100" alt="logo" class="login-logo">
                             <h4>Online Student Managment System</h4>
                                  <div style="padding-top:0px" class="panel-body" >
+                                     <p class="red">
+                            Demo Student: <br/>
+                                         <i class="green">Username & password: 65 | 70</i><br/>
+                                         Demo Teacher:<br/> <i class="green">Username & password: 101 | 102</i> 
+                                     <br/>
+                                         Admin:<br/> <i class="green">Username & password: admin</i></p>
 
                                     @if(Session::get ('message'))
                                            <div class="alert alert-danger">
@@ -39,20 +45,17 @@
 							    <div class="form-group input-group">
 							    	<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>  								    {!!  Form::password('password', array('placeholder' => 'Password', 'class'=>'form-control')) !!}
 							    </div><!-- end .form-group -->	
-                            
-                            
-							    <div class="form-group input-group">
-							    	<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                                    {!!   Form::select('size', array('L' => 'Large', 'S' => 'Small'), array('class'=>'form-control')); !!}
-							    </div><!-- end .form-group -->						   						   						   						   						   						   						   						   						   						   
+                             						   						   						   						   						   						   						   						   
 
 							    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
 							 {!! Form::close() !!} 
+                          
 						</div><!-- end .login-form -->
 					</div><!-- end .col-md-5 -->
 				</div><!-- end .row -->
 			</div><!-- end .container -->
 		</div><!-- end .login-page -->
+     
 	</div><!-- end .login-page-body -->
 	<script src="{!! asset('js/jquery.min.js') !!}"></script>
 	<script src="{!! asset('js/moment.js') !!}"></script>

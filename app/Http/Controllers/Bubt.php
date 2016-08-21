@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\users;
 use App\Model\students;
+use App\Model\teachers;
 use App\Http\Request\post;
 use App\Http\Requests\createPatients;
 use App\Http\Requests\editPatientsRequest;
@@ -21,7 +22,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App;
 
 
-class Starlab extends Controller {
+class Bubt extends Controller {
     
     //UserType
    // public $user = userPowerSession();
@@ -30,44 +31,7 @@ class Starlab extends Controller {
     //patients
     public $paginate = 15;
     
-    
-    //Request for administrator approve
-    public function requestAdministratorApprove($id){
-        DB::table('patients')->where('id','=',$id)->update(array('administrator_approve'=>'0')); 
-    }
-    
-    //User session check
-    public function userPowerSession(){
-        $userPowerSession = Session::get('user_type'); 
-        if($userPowerSession == md5(1)){
-            $userPower = 1;
-        }
-        elseif($userPowerSession == md5(2)){
-            $userPower = 2;
-        }
-        
-        return $userPower;
-    }
-    
-    //return yesterday date
-    public function yesterday(){
-        return $yesterday =  date("Y-m-d",strtotime("-1 day"));
-    }
-    
-    //return last week date
-    public function week(){
-        return $thisWeek =  date("Y-m-d",strtotime("-1 week")); 
-    }
-    
-    //return last month date
-    public function month(){
-        return $thisMonth =  date("Y-m-d",strtotime("-1 month")); 
-    }
-    
-    //return last year date
-    public function year(){
-        return $thisYear =  date("Y-m-d",strtotime("-1 year")); 
-    }
+
     
 
 	//Home page. Login form
@@ -89,15 +53,12 @@ class Starlab extends Controller {
     public function login(){
                
         if(Auth::check()){
-           return redirect('/dashboard');
-            
-           
-            
+           return redirect('/dashboard');  
             
         }
         else{
         
-            return view('starlab/login');        
+            return view('bubt/login');        
         }
     }
     
@@ -151,79 +112,36 @@ class Starlab extends Controller {
             }
             elseif($userType == 2){
                 //Teacher
+                $teacher = teachers::find($userId);
                 
+                echo $teacher;
                 
                 
             }
             elseif($userType == 3){
                 //Admin
                 
-                
+                echo "Super Admin";
             }
             else{
-                return view('starlab/login');
+                return view('bubt/login');
             }
             
             
-           // echo bcrypt('70');
+           //echo bcrypt('admin');
            
             
            
                 
         }
         else{
-            return view('starlab/login'); 
+            return view('bubt/login'); 
         }
         
         
     }
     
-    
-    
-    //Admin dashboard 
-    public function allPatient($id){        
-        
-        if (Auth::check()){
-            
-            //Login Status
-            $loginStatus = "logout";
-            
-            //pratient show item 
-            if($id=="all"){
-                $allpatients = DB::table('patients')->where('active','=','1')->orderBy('id','desc')->paginate($this->paginate);
-            }
-            //Today admission
-            elseif($id=="today"){
-               $allpatients = DB::table('patients')->where('created_at','>=',date("Y-m-d"))->where('active','=','1')->orderBy('id','desc')->paginate($this->paginate);
-            }
-            //Yesterday admission
-            elseif($id=="yesterday"){
-               $allpatients = DB::table('patients')->where('created_at','<',date("Y-m-d"))->where('created_at','>=', $this->yesterday())->where('active','=','1')->orderBy('id','desc')->paginate($this->paginate);
-            }
-            //lastWeek admission
-            elseif($id=="week"){
-               $allpatients = DB::table('patients')->where('created_at','>=', $this->week())->where('active','=','1')->orderBy('id','desc')->paginate($this->paginate);
-            }
-            //month admission
-            elseif($id=="month"){
-               $allpatients = DB::table('patients')->where('created_at','>=', $this->month())->where('active','=','1')->orderBy('id','desc')->paginate($this->paginate);
-            }
-            //year admission
-            elseif($id=="year"){
-               $allpatients = DB::table('patients')->where('created_at','>=', $this->year())->where('active','=','1')->orderBy('id','desc')->paginate($this->paginate);
-            }
-            else{
-                return view('starlab/404');
-            }
-                        
-            return view('starlab/allpatients')->with(array('allpatients' => $allpatients, 'loginStatus' => $loginStatus,'userPower'=>$this->userPowerSession()));            
-        }
-        else{
-            $loginStatus = "login";
-            return redirect('/');
-        }        
-    }
-    
+
     
     //Logout 
     public function logout(){
@@ -235,16 +153,9 @@ class Starlab extends Controller {
     
     
     
-    //Create a new patient.
-	public function create(){                  
-        if(Auth::check()){
-            return view('starlab/create');
-        }
-        else{
-            return redirect('/');
-        }		
-	}
-
+    
+    
+    
     
     
     //Save a new patient request
@@ -290,10 +201,10 @@ class Starlab extends Controller {
         
         if(Auth::check()){
            $patientInfo = patients::find($id);          
-           return view('starlab/show')->with(array('patientInfo' => $patientInfo ,'userPower'=>$this->userPowerSession())); 
+           return view('bubt/show')->with(array('patientInfo' => $patientInfo ,'userPower'=>$this->userPowerSession())); 
         }
         
-        return view('starlab/login'); 
+        return view('bubt/login'); 
         
 	}
     
@@ -306,27 +217,27 @@ class Starlab extends Controller {
             $patientInfo = patients::find($id);
            
             if($page == "front"){
-                return view('starlab/fitCard/front')->with('patientInfo', $patientInfo);
+                return view('bubt/fitCard/front')->with('patientInfo', $patientInfo);
             }
             else if($page == "back"){
-                return view('starlab/fitCard/back')->with('patientInfo', $patientInfo);
+                return view('bubt/fitCard/back')->with('patientInfo', $patientInfo);
             }
             else if($page == "moneyReceipt"){
-                return view('starlab/moneyReceipt/moneyReceipt')->with('patientInfo', $patientInfo);
+                return view('bubt/moneyReceipt/moneyReceipt')->with('patientInfo', $patientInfo);
             }
             else{
-               return view('starlab/login'); 
+               return view('bubt/login'); 
             }
         
             
         }        
-        return view('starlab/login');
+        return view('bubt/login');
         
 	}
     
     //test
     public function test(){
-        return view('starlab/fitCard');
+        return view('bubt/fitCard');
     }
     
 
@@ -336,7 +247,7 @@ class Starlab extends Controller {
         
         if(Auth::check()){
             $editPatients = patients::find($id);        
-            return view('starlab/editPatient')->with('editPatients', $editPatients);
+            return view('bubt/editPatient')->with('editPatients', $editPatients);
         }
         else{
             return redirect('/');
@@ -491,7 +402,7 @@ class Starlab extends Controller {
     public function editMedicalExaminations($id){
          if(Auth::check()){
             $editMedicalExaminations = patients::find($id);        
-            return view('starlab/editMedicalExaminations')->with('editMedicalExaminations', $editMedicalExaminations);
+            return view('bubt/editMedicalExaminations')->with('editMedicalExaminations', $editMedicalExaminations);
         }
         else{
             return redirect('/');
@@ -547,7 +458,7 @@ class Starlab extends Controller {
     public function editLaboratoryInvestigations($id){
          if(Auth::check()){
             $laboratoryInvestigations = patients::find($id);        
-            return view('starlab/laboratoryInvestigations')->with('laboratoryInvestigations', $laboratoryInvestigations);
+            return view('bubt/laboratoryInvestigations')->with('laboratoryInvestigations', $laboratoryInvestigations);
         }
         else{
             return redirect('/');
@@ -619,7 +530,7 @@ class Starlab extends Controller {
     public function editRadiology($id){
          if(Auth::check()){
             $radiology = patients::find($id);        
-            return view('starlab/radilogy')->with('radilogy', $radiology);
+            return view('bubt/radilogy')->with('radilogy', $radiology);
         }
         else{
             return redirect('/');
@@ -687,7 +598,7 @@ class Starlab extends Controller {
     //Search Patient form
     public function searchPatient(){
         if(Auth::check()){                   
-            return view('starlab/searchPatient');
+            return view('bubt/searchPatient');
         }
         else{
             return redirect('/');
@@ -732,7 +643,7 @@ class Starlab extends Controller {
     public function fitUnfit(){
         if(Auth::check()){              
           
-            return view('starlab/searchPatientFitUnfit');
+            return view('bubt/searchPatientFitUnfit');
             
         }
         else{
@@ -752,7 +663,7 @@ class Starlab extends Controller {
             
              if($patient){
               
-               return view("starlab/fitUnfitPrintButonShow")->with(array('patientInfo'=>$patient, 'userPower'=>$this->userPowerSession()));
+               return view("bubt/fitUnfitPrintButonShow")->with(array('patientInfo'=>$patient, 'userPower'=>$this->userPowerSession()));
               
                                
              }
