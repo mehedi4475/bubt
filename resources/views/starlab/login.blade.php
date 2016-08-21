@@ -16,7 +16,9 @@
 				<div class="row">
 					<div class="col-md-5 col-md-offset-3">
 						<div class="login-form">
-							<img src="img/logo.svg" alt="logo" class="login-logo">							
+                            
+							<img src="img/logo.png" width="75" height="100" alt="logo" class="login-logo">
+                            <h4>Online Student Managment System</h4>
                                  <div style="padding-top:0px" class="panel-body" >
 
                                     @if(Session::get ('message'))
@@ -30,12 +32,18 @@
 							{!! Form::open(array('url' => 'login','class'=>'form-horizontal','role'=>'form')) !!} 
 								<div class="form-group input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-	  								{!! Form::text('username', '', array('placeholder' => 'Username', 'class'=>'form-control')) !!}
+	  								{!! Form::text('username', '', array('placeholder' => 'ID', 'class'=>'form-control')) !!}
 								</div><!-- end .form-group -->
 
 							      						   						   						   						   						   						   						   
 							    <div class="form-group input-group">
 							    	<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>  								    {!!  Form::password('password', array('placeholder' => 'Password', 'class'=>'form-control')) !!}
+							    </div><!-- end .form-group -->	
+                            
+                            
+							    <div class="form-group input-group">
+							    	<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                                    {!!   Form::select('size', array('L' => 'Large', 'S' => 'Small'), array('class'=>'form-control')); !!}
 							    </div><!-- end .form-group -->						   						   						   						   						   						   						   						   						   						   
 
 							    <button type="submit" class="btn btn-primary btn-block">Sign in</button>

@@ -79,6 +79,7 @@ html, body {
 	border-radius: 5px;
 	box-shadow: 0 5px 50px rgba(0,0,0,0.4);
 	overflow: hidden;
+    text-align: center;
 }
 .login-page .input-group-addon {
 	background-image: linear-gradient(to bottom, #337AB7 0%, #265A88 100%);
