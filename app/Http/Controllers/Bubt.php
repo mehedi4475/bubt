@@ -24,8 +24,17 @@ use App;
 
 class Bubt extends Controller {
     
-    //UserType
-   // public $user = userPowerSession();
+       //User session check
+    public function userPowerSession(){
+        $userType = Session::get('userType');
+        $userId = Session::get('userId');
+        $userUniqueId = Session::get('userUniqueId'); 
+        
+        $array = array('userType' =>$userType, 'userId' =>$userId, 'userUniqueId'=>$userUniqueId);
+        
+        return $array;
+    
+    }
     
   
     //patients
@@ -120,8 +129,9 @@ class Bubt extends Controller {
             }
             elseif($userType == 3){
                 //Admin
+                return view('bubt/admin'); 
                 
-                echo "Super Admin";
+                
             }
             else{
                 return view('bubt/login');
@@ -150,6 +160,153 @@ class Bubt extends Controller {
         return redirect('/');
         
     }
+    
+    
+    
+    //Department
+    public function departments(){
+       
+          if(Auth::check()){ 
+                   
+             if($this->userPowerSession()['userType'] == 1){
+                //student
+                 echo "student: read department";
+             
+             }  
+             elseif($this->userPowerSession()['userType'] == 2){
+                //Teacher
+                 echo "Teacher: read department";
+             } 
+             elseif($this->userPowerSession()['userType'] == 3){
+                //Admin
+                
+                 //echo "Admin: create/read/update/delete department";
+                 
+                 
+                  $departments = DB::table('departments')->where('active','=','1')->orderBy('id','desc')->paginate($this->paginate);
+                 
+                  return view('bubt/departments')->with(array('departments' => $departments ,'userPower'=>$this->userPowerSession()['userType']));
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+             }
+              
+            
+          
+        }
+        else{
+            return redirect('/');
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    function demo(){
+        
+          if(Auth::check()){ 
+                   
+             if($this->userPowerSession()['userType'] == 1){
+                //student
+                 echo "student: read department";
+             
+             }  
+             elseif($this->userPowerSession()['userType'] == 2){
+                //Teacher
+                 echo "Teacher: read department";
+             } 
+             elseif($this->userPowerSession()['userType'] == 3){
+                //Admin
+                
+                echo "Admin: create/read/update/delete department";
+                 
+                 
+                 
+             }
+              
+            
+          
+        }
+        else{
+            return redirect('/');
+        }
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

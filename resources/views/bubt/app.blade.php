@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Dashboard | StarLab</title>
+	<title>Dashboard | BUBT</title>
 	<link rel="icon" href="img/favicon.png">
 	<link rel="stylesheet" href="{{URL::to('/css/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{URL::to('/css/bootstrap-theme.css')}}">
@@ -18,26 +18,76 @@
 	<div class="dashboard">
 		<div class="container">
 			<div class="row">
-			  <img src="{{URL::to('/img/logo.svg')}}" alt="logo" class="logo">
-			</div><!-- end .row -->
-
+                 <div class="col-md-2 logo">
+                    <img src="img/logo.png" class="logo"/>
+			     </div>
+                <div class="col-md-10 main-title">
+                    <h2>Bangladesh University of Business and Technology (BUBT)</h2>
+                    <h3>Online Student Managment System</h3>
+			    </div>             
+            </div>     
+		 
+			<div class="row">
+				<nav class="navbar navbar-default">   
+                    <div class="login-as">Login as: <span>Admin</span>, <a href="{{URL::to('/logout')}}">Logout</a></div>
+                </nav>
+                </nav>
+            </div>
+		 
 			<div class="row">
 				<nav class="navbar navbar-default">
-					<ul class="nav navbar-nav">
-						<li><a href="{{URL::to('/dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-						<li><a href="{{URL::to('/create')}}"><i class="fa fa-user-plus"></i> Add Patient</a></li>					
-						<li><a href="{{URL::to('/search-patient')}}"><i class="fa fa-search-plus"></i> Find Patient</a></li>
-						<li><a href="{{URL::to('/patients/all')}}"><i class="fa fa-users"></i> All Patients</a></li>
-                       
-						@if( Session::get('userPower') == md5(2))
-                        <li><a class="admin" href="{{URL::to('/user')}}/{!! Session::get('userId')!!}"><i class="fa fa-user"></i><span> Super Admin</span></a></li>
-                         @elseif( Session::get('userPower') == md5(1))
-                           <li><a class="admin" href="{{URL::to('/user')}}/{!! Session::get('userId')!!}"><i class="fa fa-user"></i><span> Admin</span></a></li>
-                        @endif 
-						
-						<li><a href="{{URL::to('/fitUnfit')}}"><i class="fa fa-print"></i> Fit/Unfit</a></li>
-						<li><a href="{{URL::to('/logout')}}"><i class="fa fa-sign-out"></i> Logout</a></li>
-					</ul><!-- end .nav -->
+                   
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/departments')}}"><img src="img/icon/dept.png"/><div class="dasboard-title">Departments</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/students')}}"><img src="img/icon/students.png"/><div class="dasboard-title">Students</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/teachers')}}"><img src="img/icon/teachers.png"/><div class="dasboard-title">Teachers</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/courses')}}"><img src="img/icon/courses.png"/><div class="dasboard-title">Courses</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/courses-offer')}}"><img src="img/icon/courses-offer.png"/><div class="dasboard-title">Courses Offer</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/class-routine')}}"><img src="img/icon/class-routine.png"/><div class="dasboard-title">Class Routine</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/exam-routine')}}"><img src="img/icon/exam-routine.png"/><div class="dasboard-title">Exam Routine</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/marks-entry')}}"><img src="img/icon/marks-insert.png"/><div class="dasboard-title">Marks Entry</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/results')}}"><img src="img/icon/results.png"/><div class="dasboard-title">Results</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/message')}}"><img src="img/icon/email.png"/><div class="dasboard-title">Message</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/profile')}}"><img src="img/icon/profile.png"/><div class="dasboard-title">Profile</div></a>
+                    </div>
+                    
+                    <div class="col-md-2 single-title">
+                        <a href="{{URL::to('/logout')}}"><img src="img/icon/logout.png"/><div class="dasboard-title">Logout</div></a>
+                    </div>
+                    
+                    
+            
 				</nav><!-- end .navbar -->
 			</div><!-- end .row -->
         
@@ -97,19 +147,20 @@
             
        @yield('body')
 
+        
+    </div>
         <div class="row"> 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="section">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <div class="copyright">
-					<p>&copy; Star Lab Diagnostic & Medical Checkup Center</p>
-					<p>Developed & mantained by <a target="_blank" href="http://opticalit.com">Optical IT</a></p>
+					<p>&copy; Online Student Managment System | BUBT 2016</p>
+					<p>Developed by <a target="_blank" href="http://bubt.ac.bd">CSE Dept, BUBT</a></p>
 				</div>
                 </div>
               </div> 
             </div>
         </div>
-    </div>
 </div>
 
     <!--[if IE]>

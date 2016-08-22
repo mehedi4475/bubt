@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- হোষ্ট: 127.0.0.1
--- তৈরী করতে ব্যবহৃত সময়: আগ 21, 2016 at 02:40 PM
+-- তৈরী করতে ব্যবহৃত সময়: আগ 22, 2016 at 02:16 PM
 -- সার্ভার সংস্করন: 10.1.13-MariaDB
 -- পিএইছপির সংস্করন: 7.0.6
 
@@ -23,6 +23,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- টেবলের জন্য টেবলের গঠন `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sortname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `active` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- টেবলের জন্য তথ্য স্তুপ করছি `departments`
+--
+
+INSERT INTO `departments` (`id`, `fullname`, `sortname`, `active`, `created_at`, `updated_at`) VALUES
+(1, 'Computer Science and Engineering', 'CSE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Electrical and Electronic Engineering', 'EEE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- টেবলের জন্য টেবলের গঠন `migrations`
 --
 
@@ -38,7 +61,8 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_08_21_103222_users', 1),
 ('2016_08_21_104831_student', 2),
-('2016_08_21_115734_create_teachers_table', 3);
+('2016_08_21_115734_create_teachers_table', 3),
+('2016_08_22_090752_create_departments_table', 4);
 
 -- --------------------------------------------------------
 
@@ -125,15 +149,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `user_type`, `user_id`, `active`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '65', '$2y$10$eAGqz4YWskZiN1yC1qmHE.EbXCdAhc6A4HULdhiOFgJ1/djEBW3CK', '1', '1', '1', 'phlwn1uilrqLOcmoZIrkDlYxKeqYMnejG8rM44yYyxkucFPjOUaV8F1ZBEdD', '0000-00-00 00:00:00', '2016-08-21 06:23:11'),
+(1, '65', '$2y$10$eAGqz4YWskZiN1yC1qmHE.EbXCdAhc6A4HULdhiOFgJ1/djEBW3CK', '1', '1', '1', 'fHYLH35KCb4j8wJmMh9UGzVFxwmGiblqKfKKVy1jqYXf7FZgu1ZKyvrabb1W', '0000-00-00 00:00:00', '2016-08-22 01:55:49'),
 (2, '70', '$2y$10$FY/bHMJywz3Goy0yUD.9yeppPPKcJlZMsBzrMNpJHl554nqTbI2CS', '1', '2', '1', 'OqAhSqTL0ItmpP2yo4r9dXqHMD1rHUDbNksFZQTFScpzYrlrWvjIQHaYPLQJ', '0000-00-00 00:00:00', '2016-08-21 05:43:36'),
-(3, '101', '$2y$10$3dEE14M24NQTeDSQV8NsNunP20XTNej6q14A8ZpfjU0BUT8LTEZA2', '2', '1', '1', 'H3vM59B5lvtcIOJOKEsNNPYeQq89ghWCcLMGTanqOtBOIGsYqZFUNuvmNtLR', '0000-00-00 00:00:00', '2016-08-21 06:16:33'),
+(3, '101', '$2y$10$3dEE14M24NQTeDSQV8NsNunP20XTNej6q14A8ZpfjU0BUT8LTEZA2', '2', '1', '1', 'kuh9QFowziLkMw3e8F8aZcMovp2ciw4zRs2WCR4FJjdTWHg2ytncYqoqjJSU', '0000-00-00 00:00:00', '2016-08-22 03:51:16'),
 (4, '102', '$2y$10$8EtBTIeCcbRHKTSeYZrQbO6BbPIqtyhaHKsSFOatmLCMsVQJJu2tK', '2', '2', '1', 'IKIyeKgF9lYLR6xttYNT3FNIQArs9kDlFp3QEZz0sUQ9pTsWdq70cRqUkqDr', '0000-00-00 00:00:00', '2016-08-21 06:22:00'),
-(5, 'admin', '$2y$10$ltpc9KBy8B4ih0B9XmwINusaUpVUydQYvxxGBwmfwHlF/9Sm3KmFa', '3', '', '1', 'sZlZW84jC9qP1ukU8HS78wNcno4uMtSzvjX1WJWiLZnZbR7ZYEl2knrJ3p26', '0000-00-00 00:00:00', '2016-08-21 06:25:35');
+(5, 'admin', '$2y$10$ltpc9KBy8B4ih0B9XmwINusaUpVUydQYvxxGBwmfwHlF/9Sm3KmFa', '3', '', '1', 'HoHfW0nqWTlI7ZglNilchyLg9XhvXvP2MAkLSC0W4pGyf6hiAd7mQnTVeq4j', '0000-00-00 00:00:00', '2016-08-22 05:20:49');
 
 --
 -- স্তুপকৃত টেবলের ইনডেক্স
 --
+
+--
+-- টেবিলের ইনডেক্সসমুহ `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `departments_fullname_unique` (`fullname`),
+  ADD UNIQUE KEY `departments_sortname_unique` (`sortname`);
 
 --
 -- টেবিলের ইনডেক্সসমুহ `students`
@@ -157,6 +189,11 @@ ALTER TABLE `users`
 -- স্তুপকৃত টেবলের জন্য স্বয়ক্রীয় বর্দ্ধিত মান (AUTO_INCREMENT)
 --
 
+--
+-- টেবলের জন্য স্বয়ক্রীয় বর্দ্ধিত মান (AUTO_INCREMENT) `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- টেবলের জন্য স্বয়ক্রীয় বর্দ্ধিত মান (AUTO_INCREMENT) `students`
 --

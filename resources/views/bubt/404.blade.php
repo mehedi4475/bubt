@@ -1,4 +1,4 @@
-@extends('starlab/app')
+@extends('bubt/app')
 
 @section('body')
 

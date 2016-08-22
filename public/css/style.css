@@ -5,11 +5,19 @@ html, body {
     height: 100%;
 }
 .container {
-	width: 970px !important;
+	width: 1200px !important;
+    background-color: skyblue;
+    padding: 50px;
+    margin:30px auto;
+    min-height: 800px;
 }
 .logo {
-	width: 300px;
-	margin: 30px auto;
+    text-align: left;
+}
+.logo img{
+    width: 75px;
+    height: 100px;
+    margin-bottom: 50px;
 }
 .login-form .form-control {
 	height: 40px;
@@ -423,4 +431,94 @@ a.reject_patient{
 
 .green{
     color: green;
+}
+
+
+
+.single-title{
+    text-align: center;
+    margin: 50px 0px;
+}
+
+.single-title img{
+    width: 100px;
+    height: 100px;
+}
+
+
+.login-as{
+    padding:15px;
+}
+
+.login-as span{
+    color: red;
+}
+
+
+
+.main-title{
+    color: white;
+    font-family: fantasy;
+    letter-spacing: 2px;
+}
+
+
+
+.navbar-static-top {
+  margin-bottom:20px;
+}
+
+i {
+  font-size:16px;
+}
+
+.nav > li > a {
+  color:#787878;
+}
+  
+footer {
+  margin-top:20px;
+  padding-top:20px;
+  padding-bottom:20px;
+  background-color:#efefef;
+}
+
+/* count indicator near icons */
+.nav>li .count {
+  position: absolute;
+  bottom: 12px;
+  right: 6px;
+  font-size: 9px;
+  background: rgba(51,200,51,0.55);
+  color: white;
+  line-height: 1em;
+  padding: 2px 4px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+
+.singleapp-icon{
+    width: 15px;
+    height: 15px;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+
+.appsingle-dasboard-title{
+    float: right;
+    padding: 2px 0px;
+}
+
+.singleapp-alink{
+        display: inline-flex;
+}
+
+.nav-stacked > li {
+    float: none;
+    border-bottom: 1px solid white;
 }

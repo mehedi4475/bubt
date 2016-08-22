@@ -10,7 +10,8 @@ Route::get('/dashboard','Bubt@dashboard');
 
 
 
-
+//Department
+Route::get('/departments','Bubt@departments');
 
 
 
