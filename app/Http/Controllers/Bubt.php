@@ -40,7 +40,10 @@ class Bubt extends Controller {
     //patients
     public $paginate = 15;
     
-
+    
+    
+    
+    
     
 
 	//Home page. Login form
@@ -180,7 +183,7 @@ class Bubt extends Controller {
              elseif($this->userPowerSession()['userType'] == 3){
                 //Admin
                 
-                 //echo "Admin: create/read/update/delete department";
+              //   echo "Admin: create/read/update/delete department";
                  
                  
                   $departments = DB::table('departments')->where('active','=','1')->orderBy('id','desc')->paginate($this->paginate);
@@ -203,6 +206,31 @@ class Bubt extends Controller {
         else{
             return redirect('/');
         }
+        
+    }
+    
+    
+    //Department Add
+    public function departmentsAdd(){
+        
+          if(Auth::check()){ 
+                   
+             if($this->userPowerSession()['userType'] == 3){               
+                
+                 //Admin
+                 
+                 echo $this->userPowerSession()['userType'];
+                
+                 echo "Add Department";
+             }
+             else{
+                  return redirect('/');              
+              }           
+          
+        }
+        else{
+            return redirect('/'); 
+        }    
         
     }
     
@@ -249,6 +277,17 @@ class Bubt extends Controller {
     }
     
     
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+/* Delete functions */
     
     
     
@@ -290,25 +329,7 @@ class Bubt extends Controller {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /*
     
     
     
@@ -837,7 +858,8 @@ class Bubt extends Controller {
     
 
     
-    
-    
+ */   
+ 
+ 
 
 }

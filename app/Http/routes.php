@@ -1,17 +1,57 @@
 <?php
 
-
-//login, logout and dashboard
+/*---------------------------DEPARTMENTS-----------------------------------------*/
+//Root Directory
 Route::get('/','Bubt@login');
+
+//Login
 Route::get('/login','Bubt@login');
+
+//Login Verification
 Route::post('/login','Bubt@loginVerification');
+
+//Logout
+Route::get('/logout','Bubt@logout');
+
+//Dashboard
 Route::get('/dashboard','Bubt@dashboard');
+/*---------------------------DEPARTMENTS-----------------------------------------*/
 
 
 
-
+/*---------------------------DEPARTMENTS-----------------------------------------*/
 //Department
 Route::get('/departments','Bubt@departments');
+
+//Department Add
+Route::get('/department/add','Bubt@departmentsAdd');
+/*---------------------------DEPARTMENTS-----------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+
 
 
 
@@ -25,8 +65,6 @@ Route::get('/departments','Bubt@departments');
 Route::get('/patients','Bubt@allPatient');
 Route::get('/patients/{id}','Bubt@allPatient');
 
-
-Route::get('/logout','Bubt@logout');
 
 
 //Search Patient

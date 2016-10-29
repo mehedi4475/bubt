@@ -43,12 +43,12 @@ class Handler extends ExceptionHandler {
             switch ($e->getStatusCode()) {
                 case '404':
                             \Log::error($e);
-                        return \Response::view('starlab/404');
+                        return \Response::view('bubt/404');
                 break;
 
                 case '500':
                     \Log::error($exception);
-                        return \Response::view('starlab/500');   
+                        return \Response::view('bubt/500');   
                 break;
 
                 default:

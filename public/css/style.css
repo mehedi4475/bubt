@@ -75,7 +75,7 @@ html, body {
 	right: 0;
 }
 .login-page {
-	margin-top: 60px;
+	margin-top: 0px;
 }
 .login-page .login-logo {
 	margin-bottom: 30px;
@@ -529,3 +529,24 @@ h3, .h3, h4 {
     font-family: -webkit-body;
     text-transform: uppercase;
 }
+
+
+
+table tr td a i.fa-plus-square{
+    padding:0px 5px;
+    color:green;
+}
+
+table tr td a i.fa-pencil-square-o{
+    padding:0px 5px;
+    color:blue;
+}
+
+
+
+table tr td a i.fa-trash-o{
+    padding:0px 5px;
+    color: red;
+}
+
+
