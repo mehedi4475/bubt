@@ -17,13 +17,13 @@
 <body>
 	<div class="dashboard">
 		<div class="container">
-			<div class="row">
+			<div class="row navbar navbar-default">
                  <div class="col-md-2 logo">
                     <img src="img/logo.png" class="logo"/>
 			     </div>
                 <div class="col-md-10 main-title">
-                    <h2>Bangladesh University of Business and Technology (BUBT)</h2>
-                    <h3>Online Student Managment System</h3>
+                    <h3>Bangladesh University of Business and Technology (BUBT)</h3>
+                    <h4>Online Student Managment System</h4>
 			    </div>             
             </div>     
 		 

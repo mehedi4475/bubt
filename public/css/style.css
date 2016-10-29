@@ -2,11 +2,10 @@
                 		GLOBAL DESIGN                           
 ===============================================================*/
 html, body {
-    height: 100%;
+    height: 100%;   
 }
 .container {
-	width: 1200px !important;
-    background-color: skyblue;
+	width: 1200px !important;   
     padding: 50px;
     margin:30px auto;
     min-height: 800px;
@@ -17,7 +16,7 @@ html, body {
 .logo img{
     width: 75px;
     height: 100px;
-    margin-bottom: 50px;
+    margin: 50px;
 }
 .login-form .form-control {
 	height: 40px;
@@ -457,9 +456,10 @@ a.reject_patient{
 
 
 .main-title{
-    color: white;
+    color: skyblue;
     font-family: fantasy;
     letter-spacing: 2px;
+    padding:58px 0px;
 }
 
 
@@ -521,4 +521,11 @@ footer {
 .nav-stacked > li {
     float: none;
     border-bottom: 1px solid white;
+}
+
+
+h3, .h3, h4 {
+    font-size: 24px;
+    font-family: -webkit-body;
+    text-transform: uppercase;
 }
